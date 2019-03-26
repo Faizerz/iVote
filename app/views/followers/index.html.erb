@@ -1,0 +1,15 @@
+<div class="box">
+  Followers:
+  <br>
+  <% current_user.followers.each do |f| %>
+    <%= link_to User.find(f.follower_id).username, user_path(current_user) %><br>
+  <% end %>
+</div>
+
+<div class="box">
+  Following:
+  <br>
+  <% current_user.following.each do |f| %>
+    <%= link_to User.find(f.followed_id).username, user_path(current_user) %><br>
+  <% end %>
+</div>
