@@ -30,7 +30,7 @@
                 <% content_tag(:normal, 'Unfollow') %><% end %>
               <% else  %>
                 <%= hidden_field_tag 'todo', "follow" %>
-                <%= button_tag(type: 'submit', class: "button is-info", value: user.id) do %>
+                <%= button_tag(type: 'submit', class: "button is-primary", value: user.id) do %>
                 <% content_tag(:normal, 'Follow') %><% end %>
               <% end %>
             </form>

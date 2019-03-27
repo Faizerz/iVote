@@ -2,7 +2,7 @@
   Followers:
   <br>
   <% current_user.followers.each do |f| %>
-    <%= link_to User.find(f.follower_id).username, user_path(current_user) %><br>
+    <%= link_to User.find(f.follower_id).username, user_path(f.follower_id) %><br>
   <% end %>
 </div>
 
@@ -10,6 +10,6 @@
   Following:
   <br>
   <% current_user.following.each do |f| %>
-    <%= link_to User.find(f.followed_id).username, user_path(current_user) %><br>
+    <%= link_to User.find(f.followed_id).username, user_path(f.follower_id) %><br>
   <% end %>
 </div>
