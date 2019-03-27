@@ -14,26 +14,29 @@
   <% @polls.reverse.each do |poll| %>
     <div class="box is-centered" style="text-align: center;">
       <h1 style="font-size:1.8em"><%= poll.question %></h1><br>
-      <h2 style="font-size:1.4em">
+      <div style="font-size:1.4em">
 
         <% if Vote.all.where(poll_id: poll.id).count > 0 %>
           <% red = (((Vote.all.where(poll_id: poll.id, vote: true).count).to_f/(Vote.all.where(poll_id: poll.id).count).to_f)*100).round %>
-            <% green = 100-red%><% end %>
+          <% green = 100-red%>
+        <% end %>
 
             <%= form_tag(votes_path) %>
 
-            <%= hidden_field_tag 'poll_id', "#{poll.id}" %>
+            <%= hidden_field_tag 'poll_id', poll.id %>
 
-            <% if !current_user.votes.find_by(poll_id: poll.id) %>
+            <% if !current_user.votes.find_by(poll_id: poll.id) == true %>
               <%= button_tag(type: 'submit', class: "button is-danger", value: true) do %>
               <% content_tag(:strong, poll.answer_one) %><% end %>
               or
               <%= button_tag(type: 'submit', class: "button is-success", value: false) do %>
               <% content_tag(:strong, poll.answer_two) %><% end %>
+              <br>
+            </form>
             <% else %>
               You voted for
               <b>
-                <u><%= current_user.votes.find_by(poll_id: poll.id).vote ? poll.answer_one : poll.answer_two %></u>
+
               </b>
               <br><br>
               <%= button_tag(type: 'button', class: "button is-danger", value: true) do %>
@@ -41,8 +44,7 @@
               or
               <%= button_tag(type: 'button', class: "button is-success", value: false) do %>
               <% content_tag(:strong, poll.answer_two) %><% end %>
-            </form>
-
+              <br>
               <br>
 
               <% if red == 100 %>
@@ -61,7 +63,7 @@
                 <%= poll.votes.where(vote: true).count %>   -  <%= poll.votes.where(vote: false).count%>
               <% end %>
 
-          </h2><br>
+          </div><br>
 
           <h5 style="font-size:0.8em">Created by:
             <%= link_to poll.user.username, user_path(poll.user.id) %></h5>
