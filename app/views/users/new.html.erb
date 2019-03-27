@@ -1,15 +1,16 @@
 <div class="column is-12 is-centered" style="margin-top: 50px;">
-  <h2 class="title is-3">Sign up</h2>
+  <h2 class="title is-2">Sign up</h2>
   <%= form_for(@user) do |f| %>
-  <label class="label">Username</label>
-  <i class="fas fa-user"></i>
-  <%= f.text_field :username %><br><br>
-  <label class="label">Email</label>
-  <i class="fas fa-envelope-open-text"></i>
-  <%= f.text_field :email %><br><br>
-  <label class="label">Password</label>
-  <i class="fas fa-key"></i>
-  <%= f.password_field :password, autofocus: true%>
+
+  <label class="label"><i class="fas fa-user"></i>&nbsp;&nbsp;Username</label>
+  <%= f.text_field :username, class: 'input' %><br><br>
+
+  <label class="label"><i class="fas fa-envelope-open-text"></i>&nbsp;&nbsp;Email</label>
+  <%= f.text_field :email, class: 'input' %><br><br>
+
+  <label class="label"><i class="fas fa-key"></i>&nbsp;&nbsp;Password</label>
+  <%= f.password_field :password, autofocus: true, class:'input' %>
+
   <br><br><br>
   <%= f.submit class: "button is-primary" %>
 
