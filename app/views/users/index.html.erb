@@ -22,7 +22,11 @@
             Score:
             <%= user.score %>
             <br>
-            <a class="button is-info">Follow</a>
+            <% if Follower.where(follower_id: current_user.id).map{|f| f.followed_id}.include?(user.id) %>
+              <a class="button is-secondary">Unfollow</a>
+            <% else  %>
+              <a class="button is-info">Follow</a>
+            <% end %>
           </div>
         </div>
       <% end %>
