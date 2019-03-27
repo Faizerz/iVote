@@ -23,14 +23,13 @@
         <% else %>
           <nav class="navbar is-primary" role="navigation" aria-label="main navigation" style="margin-bottom:1px; border-bottom: 1px solid lightgray;">
             <div class="navbar-brand">
-              <a class="navbar-item" href="#">iVote</a>
+              <a class="navbar-item" href="#"><strong>iVote</strong></a>
             </div>
           <% end %>
           <% if current_user %>
             <div class="navbar-menu">
-              <a class="navbar-item" href="<%= polls_path %>">Polls</a>
-              <a class="navbar-item" href="<%= users_path %>">Users</a>
-              <a class="navbar-item" href="<%= user_path(current_user.id) %>">Leaderboard</a>
+              <a class="navbar-item" href="<%= users_path %>"><strong>Users</strong></a>
+              <a class="navbar-item" href="<%= leaderboard_path(current_user.id) %>"><strong>Leaderboard</strong></a>
 
             </div>
             <div class="navbar is-primary" role="navigation" aria-label="dropdown navigation">
