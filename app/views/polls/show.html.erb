@@ -64,7 +64,7 @@
         <% @poll.comments.each do |comment| %>
           <div class="column is-one-fifth">
             <div class="box">
-              <b><%= link_to comment.user.username, user_path(comment.user) %>:</b>
+              <b><%= link_to comment.user.username, user_path(comment.user) %>:</b><br>
               <%= comment.text %><br>
               <span style="font-size:0.75em; color:grey"><%= comment.created_at.strftime("%H:%M, %d %b") %></span>
             </div>
