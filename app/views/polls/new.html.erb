@@ -1,7 +1,7 @@
 <section class="section">
   <div class="container">
     <div class="columns is-centered">
-      <div class="column is-2 is-centered">
+      <div class="column is-5 is-centered">
         <% if current_user.user_type == "free" && current_user.score < 5 %>
           <p>You need a minimum of 5 points to create a poll. Answer <%="#{5-current_user.score}"%> more polls to get enough points!</p>
         <% else%>
