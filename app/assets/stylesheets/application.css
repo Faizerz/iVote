@@ -18,26 +18,20 @@
   width:100%;
 }
 
-.vote-bar {
-  width: 45%;
-  height: 20px;
-  border-radius: 20px;
-  display: inline-block;
-  margin-right: -5px;
-}
+ #home {
+   background-image: url('/assets/images/bg.jpg');
+   min-height:550px;
+   position: relative;
+ }
 
-.bg-img {
-     background-image: url(https://www.queensjewishlink.com/wp-content/uploads/2019/02/polls.jpg) ;
-     background-position: center center;
-     background-repeat:  no-repeat;
-     background-attachment: fixed;
-     background-size:  cover;
-     background-color: #999;
+ #background {
+   position: absolute;
+ }
 
-}
-
-.img-responsive {
-      display: block;
-      max-width: 100%;
-      height: auto;
-   }
+ #pid {
+   position: relative;
+    margin-top: 40%;
+    margin-left: 16%;
+    color: white;
+    font-size: 61px;
+ }
