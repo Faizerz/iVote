@@ -17,7 +17,7 @@
         <% if user.username != current_user.username %>
           <div class="column is-one-fifth">
             <div class="box">
-              <%= link_to user.username.capitalize, user_path(user.id) %>
+              <%= link_to user.username, user_path(user.id) %>
               <% if user.user_type != "free" %>✔️<% end %>
               <br>
               Score:

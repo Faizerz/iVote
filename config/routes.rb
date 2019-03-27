@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :followers, only: [:index, :create]
+  resources :followers, only: [:show, :create]
   resources :polls, :users
   resources :votes, only: [:create]
   resources :comments, only: [:create]
