@@ -1,20 +1,17 @@
-<section class="section">
-  <div class="container">
-    <div class="columns is-centered">
-      <div class="column is-2 is-centered">
-        <h2 class="title is-2">Sign up</h2>
-        <%= form_for(@user) do |f| %>
-        <label class="label">Username</label>
-        <i class="fas fa-user"></i> <%= f.text_field :username %><br>
-        <label class="label">Email</label>
-        <i class="fas fa-envelope-open-text"></i> <%= f.text_field :email %><br>
-        <label class="label">Password</label>
-        <i class="fas fa-key"></i> <%= f.password_field :password, autofocus: true%><br></br
-        <a class="button">
-          <%= f.submit class: "button is-primary is-hovered" %>
-        </a>
-      <% end %>
-    </div>
-  </div>
+<div class="column is-12 is-centered" style="margin-top: 50px;">
+  <h2 class="title is-3">Sign up</h2>
+  <%= form_for(@user) do |f| %>
+  <label class="label">Username</label>
+  <i class="fas fa-user"></i>
+  <%= f.text_field :username %><br><br>
+  <label class="label">Email</label>
+  <i class="fas fa-envelope-open-text"></i>
+  <%= f.text_field :email %><br><br>
+  <label class="label">Password</label>
+  <i class="fas fa-key"></i>
+  <%= f.password_field :password, autofocus: true%>
+  <br><br><br>
+  <%= f.submit class: "button is-primary" %>
+
+<% end %>
 </div>
-</section>
