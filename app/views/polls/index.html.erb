@@ -3,7 +3,7 @@
     <h1 style="font-size:1.8em">
       <b>iVote</b>
     </h1>
-    <h2 style="font-size:1.2em; margin-bottom:10px;"><%= current_user.username.capitalize %>
+    <h2 style="font-size:1.2em; margin-bottom:10px;"><%= current_user.username %>
       -
       <%= current_user.score %>pts</h2>
     <a href="<%= new_poll_path %>">
