@@ -1,20 +1,23 @@
 <div class="container is-fluid" style="margin-top:20px; margin-bottom:20px;">
   <div class="box">
-    @<%= @user.username %>
+    <h2 class="title is-2">@<%= @user.username %></h2>
     <% if @user.user_type != "free" %>
       ✔️<% end %>
+      <h2 class="title is-5"><%= link_to "Followers: ", followers_path(@user)%><%= @user.followers.count %></h2>
+      <h2 class="title is-5"><%= link_to "Following: ", followers_path(@user)%><%= @user.following.count %></h2>
     <br>
 
-    <% if !current_user.following.include?(@user.id) %>
-    <%= form_tag(followers_path) %>
-      <%= hidden_field_tag 'user_id', "#{current_user.id}" %>
-      <%= hidden_field_tag 'followed_id', "#{params[:id]}" %>
-      <%= button_tag(type: 'submit', class: "button is-info") do %>
-        <% content_tag(:strong, 'Follow') %>
-      <% end %>
-    </form>
+    <% if Follower.where(follower_id: current_user.id).map{|f| f.followed_id}.include?(@user.id) %>
+      <%= hidden_field_tag 'todo', "unfollow" %>
+      <%= button_tag(type: 'submit', class: "button is-secondary", value: @user.id) do %>
+      <% content_tag(:normal, 'Unfollow') %><% end %>
+    <% else  %>
+      <%= hidden_field_tag 'todo', "follow" %>
+      <%= button_tag(type: 'submit', class: "button is-primary", value: @user.id) do %>
+      <% content_tag(:normal, 'Follow') %><% end %>
     <% end %>
-  </div>
+  </form>
+</div>
 
   <% @user.polls.reverse.each do |poll| %>
     <div class="box is-centered" style="text-align: center;">
