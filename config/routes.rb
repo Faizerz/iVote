@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :followers, only: [:index, :create]
   resources :polls, :users
   resources :votes, only: [:create]
+  resources :comments, only: [:create]
 
   root "polls#index"
 
