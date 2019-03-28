@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :authentication_required, except: [:new, :create]
 
   def index
-    @users = User.all
+    @users = User.search(params[:search])
   end
 
   def leaderboard
