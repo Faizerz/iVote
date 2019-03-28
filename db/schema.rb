@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_27_134909) do
+ActiveRecord::Schema.define(version: 2019_03_28_130258) do
 
   create_table "comments", force: :cascade do |t|
     t.integer "poll_id"
@@ -36,6 +36,12 @@ ActiveRecord::Schema.define(version: 2019_03_27_134909) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "profile_pictures", force: :cascade do |t|
+    t.string "img_url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
@@ -44,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_03_27_134909) do
     t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "profile_picture_id"
   end
 
   create_table "votes", force: :cascade do |t|

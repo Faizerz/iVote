@@ -16,11 +16,13 @@ class UsersController < ApplicationController
   end
 
   def show
+    @votes = Vote.all
     @user = User.find(params[:id])
   end
 
   def new
     @user = User.new
+    @profile_pictures = ProfilePicture.all
   end
 
   def create
@@ -58,6 +60,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :user_type, :password, :email)
+    params.require(:user).permit(:username, :user_type, :password, :email, :profile_picture_id)
   end
 end

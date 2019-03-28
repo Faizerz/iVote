@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_many :votes
   has_many :polls, through: :votes
   has_many :polls
+  belongs_to :profile_picture
 
   has_secure_password
 
