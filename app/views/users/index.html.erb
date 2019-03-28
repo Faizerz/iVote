@@ -5,9 +5,8 @@
     </h1>
     <h2 style="font-size:1.2em; margin-bottom:10px;">Username -
       <%= current_user.username %></h2>
-    <a href="#">
-      <button class="button is-primary" style="font-size:1em">Search by Username</button>
-    </a>
+      <i>TODO: insert search bar here</i>
+
   </div>
 
   <% @users = @users.sort_by{|u| u.username.downcase} %>
@@ -30,7 +29,7 @@
                 <% content_tag(:normal, 'Unfollow') %><% end %>
               <% else  %>
                 <%= hidden_field_tag 'todo', "follow" %>
-                <%= button_tag(type: 'submit', class: "button is-primary", value: user.id) do %>
+                <%= button_tag(type: 'submit', class: "button is-info", value: user.id) do %>
                 <% content_tag(:normal, 'Follow') %><% end %>
               <% end %>
             </form>

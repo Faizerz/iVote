@@ -17,31 +17,28 @@
 
       <% if current_user %>
         <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
-          <div class="navbar-brand">
-            <a class="navbar-item" href="<%= root_path %>">iVote</a>
-          </div>
+          <a class="navbar-item" href="<%= root_path %>">iVote</a>
         <% else %>
           <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-              <a class="navbar-item" href="#">
-                <strong>iVote</strong>
-              </a>
-            </div>
+            <a class="navbar-item" href="#">
+              iVote
+            </a>
+
           <% end %>
           <% if current_user %>
             <div class="navbar-menu">
               <a class="navbar-item" href="<%= users_path %>">
-                <strong>Users</strong>
+                Users
               </a>
               <a class="navbar-item" href="<%= leaderboard_path(current_user.id) %>">
-                <strong>Leaderboard</strong>
+                Leaderboard
               </a>
 
             </div>
             <div class="navbar is-primary" role="navigation" aria-label="dropdown navigation">
-              <div class="navbar-item has-dropdown is-hoverable">
-                <a class="navbar-link">
-                  <h2 class="title is-5"><%= current_user.username %></h2>
+              <div class="navbar-item has-dropdown is-hoverable" style="margin-right: 75px;">
+                <a class="navbar-item">
+                  <%= current_user.username %>
                 </a>
                 <div class="navbar-end">
                   <div class="navbar-dropdown">
@@ -87,8 +84,7 @@
     <footer class="footer">
       <div class="content has-text-centered">
         <p>
-          <strong>iVote©</strong>
-          by Fez A & Kai S.
+          iVote© - Fez & Kai
         </p>
       </div>
     </footer>
