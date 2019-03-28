@@ -19,7 +19,7 @@
 }
 
  #home {
-   background-image: url('/assets/images/bg.jpg');
+   background-image: url('/assets/bg.jpg');
    min-height:550px;
    position: relative;
  }
