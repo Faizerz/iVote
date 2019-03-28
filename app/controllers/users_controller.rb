@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     if @user.valid?
       @user.save
       session[:user_id] = @user.id
-      redirect_to @user
+      redirect_to polls_path
     else
       flash[:user_error] = @user.errors.full_messages
       redirect_to new_user_path

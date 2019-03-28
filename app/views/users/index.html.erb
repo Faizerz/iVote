@@ -2,7 +2,7 @@
   <h1 style="font-size:1.8em">
     <b>All Users</b>
   </h1>
-  
+
   <h2 style="font-size:1.2em; margin-bottom:10px;">Username -
     <%= current_user.username %></h2>
     <%= form_tag(users_path, method: "get") do %>
@@ -38,6 +38,7 @@
           <% end %>
         </form>
       </div>
+    </div>
     <% end %>
   <% end %>
 </div>
