@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :followers, only: [:index, :create]
+  resources :followers, only: [:show, :create]
   resources :polls, :users
   resources :votes, only: [:create]
   resources :comments, only: [:create]
@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   post '/sessions', to: 'sessions#create' #log the user in
   get '/logout', to: 'sessions#destroy'
   get '/users/:id/leaderboard', to: 'users#leaderboard', as: 'leaderboard'
+  get '/users/:id/upgrade', to: 'users#upgrade', as: 'upgrade'
 
 end

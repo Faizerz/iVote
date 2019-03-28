@@ -11,6 +11,10 @@ class UsersController < ApplicationController
     @user = User.find(current_user.id)
   end
 
+  def upgrade
+    @user = User.find(current_user.id)
+  end
+
   def show
     @user = User.find(params[:id])
   end
