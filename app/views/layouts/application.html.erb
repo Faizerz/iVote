@@ -16,20 +16,26 @@
     <div style="min-height:440px">
 
       <% if current_user %>
-        <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+        <nav class="navbar is-primary" role="navigation" aria-label="main navigation" style="margin-bottom:1px; border-bottom: 1px solid lightgray;">
           <div class="navbar-brand">
             <a class="navbar-item" href="<%= root_path %>">iVote</a>
           </div>
         <% else %>
-          <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+          <nav class="navbar is-primary" role="navigation" aria-label="main navigation" style="margin-bottom:1px; border-bottom: 1px solid lightgray;">
             <div class="navbar-brand">
-              <a class="navbar-item" href="#"><strong>iVote</strong></a>
+              <a class="navbar-item" href="#">
+                <strong>iVote</strong>
+              </a>
             </div>
-         <% end %>
-        <% if current_user %>
+          <% end %>
+          <% if current_user %>
             <div class="navbar-menu">
-              <a class="navbar-item" href="<%= users_path %>"><strong>Users</strong></a>
-              <a class="navbar-item" href="<%= leaderboard_path(current_user.id) %>"><strong>Leaderboard</strong></a>
+              <a class="navbar-item" href="<%= users_path %>">
+                <strong>Users</strong>
+              </a>
+              <a class="navbar-item" href="<%= leaderboard_path(current_user.id) %>">
+                <strong>Leaderboard</strong>
+              </a>
 
             </div>
             <div class="navbar is-primary" role="navigation" aria-label="dropdown navigation">
@@ -39,8 +45,9 @@
                 </a>
                 <div class="navbar-end">
                   <div class="navbar-dropdown">
-                      <a class="navbar-item" href="<%= user_path(current_user.id) %>">Profile</a>
-                      <a class="navbar-item" href="<%= logout_path %>">Logout</a>
+                    <a class="navbar-item" href="<%= user_path(current_user.id) %>">Profile</a>
+                    <a class="navbar-item" href="<%= logout_path %>">Logout</a>
+                    <a class="navbar-item" href="<%= upgrade_path(current_user.id) %>">Upgrade</a>
                     <hr class="navbar-divider">
                     <div class="navbar-item">
                       Score:
@@ -56,37 +63,33 @@
               <a class="navbar-item" href="<%= new_user_path %>">Sign Up</a>
             </div>
           <% end %>
-      </nav>
-      <% if current_user %>
-      <div class="container is-fluid">
-        <%= yield %>
-      </div>
-      <% else %>
+        </nav>
+        <% if current_user %>
+          <div class="container is-fluid">
+            <%= yield %>
+          </div>
+        <% else %>
 
-      <div class="columns">
-        <div class="column is-8 is-centered" id="home">
-          <%= image_tag "bg.jpg", id: 'background' %>
-          <p style="position: relative" id="pid"><b>iVote</b></p>
+          <div class="columns">
+            <div class="column is-8 is-centered" id="home">
+              <%= image_tag "bg.jpg", id: 'background' %>
+              <p style="position: relative" id="pid">
+                <b>iVote</b>
+              </p>
 
-        </div>
-        <div class="column is-4" style="text-align:center">
+            </div>
+            <div class="column is-4" style="text-align:center"></div>
+          </div>
           <%= yield %>
-        </div>
+        <% end %>
       </div>
-
-
-
-      <% end %>
-    </div>
-  </body>
-<% if !current_user %>
-  <footer class="footer" style="position: absolute; bottom:0px; width:100%; padding:20px; height:15%">
-    <div class="content has-text-left">
+    </body>
+    <footer class="footer">
+    <div class="content has-text-centered">
       <p>
         <strong>iVote©</strong>
         by Fez A & Kai S.
       </p>
     </div>
   </footer>
-<% end %>
-</html>
+  </html>
