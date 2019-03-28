@@ -14,8 +14,18 @@
  *= require_self
  */
 
+
+
 #poll_question, #poll_answer_one, #poll_answer_two{
   width:100%;
+}
+
+.vote-bar {
+  width: 45%;
+  height: 20px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-right: -5px;
 }
 
  #home {

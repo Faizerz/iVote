@@ -1,40 +1,43 @@
+<div class="is-centered" style="text-align: center; margin-bottom:35px;   margin-top:50px">
+  <h1 style="font-size:1.8em">
+    <b>All Users</b>
+  </h1>
+  <h2 style="font-size:1.2em; margin-bottom:10px;">Username -
+    <%= current_user.username %></h2>
+  <%= form_tag(users_path, method: "get") do %>
+  <%= label_tag(:search, "Search:") %>
+  <%= text_field_tag(:search, params[:search], class: 'input', style: 'width:20%; height:1.6em') %>
+  <%= submit_tag("Search", class: 'button is-info', style: 'height:1.6em; padding-top:0px') %>
+<% end %>
 
-  <div class="is-centered" style="text-align: center; margin-bottom:35px;   margin-top:50px">
-    <h1 style="font-size:1.8em">
-      <b>All Users</b>
-    </h1>
-    <h2 style="font-size:1.2em; margin-bottom:10px;">Username -
-      <%= current_user.username %></h2>
-      <i>TODO: insert search bar here</i>
+</div>
 
-  </div>
+<% @users = @users.sort_by{|u| u.username.downcase} %>
 
-  <% @users = @users.sort_by{|u| u.username.downcase} %>
-
-    <div class="columns is-multiline">
-      <% @users.each do |user| %>
-        <% if user.username != current_user.username %>
-          <div class="column is-one-fifth">
-            <div class="box">
-              <%= link_to user.username, user_path(user.id) %>
-              <% if user.user_type != "free" %>✔️<% end %>
-              <br>
-              Score:
-              <%= user.score %>
-              <br>
-              <%= form_tag(followers_path) %>
-              <% if Follower.where(follower_id: current_user.id).map{|f| f.followed_id}.include?(user.id) %>
-                <%= hidden_field_tag 'todo', "unfollow" %>
-                <%= button_tag(type: 'submit', class: "button is-secondary", value: user.id) do %>
-                <% content_tag(:normal, 'Unfollow') %><% end %>
-              <% else  %>
-                <%= hidden_field_tag 'todo', "follow" %>
-                <%= button_tag(type: 'submit', class: "button is-info", value: user.id) do %>
-                <% content_tag(:normal, 'Follow') %><% end %>
-              <% end %>
-            </form>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
-  </div>
+<div class="columns is-multiline">
+  <% @users.each do |user| %>
+    <% if user.username != current_user.username %>
+      <div class="column is-one-fifth">
+        <div class="box">
+          <%= link_to user.username, user_path(user.id) %>
+          <% if user.user_type != "free" %>✔️<% end %>
+          <br>
+          Score:
+          <%= user.score %>
+          <br>
+          <%= form_tag(followers_path) %>
+          <% if Follower.where(follower_id: current_user.id).map{|f| f.followed_id}.include?(user.id) %>
+            <%= hidden_field_tag 'todo', "unfollow" %>
+            <%= button_tag(type: 'submit', class: "button is-secondary", value: user.id) do %>
+            <% content_tag(:normal, 'Unfollow') %><% end %>
+          <% else  %>
+            <%= hidden_field_tag 'todo', "follow" %>
+            <%= button_tag(type: 'submit', class: "button is-info", value: user.id) do %>
+            <% content_tag(:normal, 'Follow') %><% end %>
+          <% end %>
+        </form>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+</div>
