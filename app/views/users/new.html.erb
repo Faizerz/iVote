@@ -7,7 +7,7 @@
 
   <label class="label"><i class="fas fa-images"></i></i>&nbsp;&nbsp;Profile Picture</label>
   <%= f.collection_radio_buttons(:profile_picture_id, @profile_pictures, :id, :img_url) do |b|%>
-  <%= b.label { b.radio_button + image_tag(b.text, size: "100x100") } %>
+  <%= b.label { b.radio_button + image_tag(b.text, size: "100x100", border: "5") } %>
   <% end %><br><br>
 
   <label class="label"><i class="fas fa-envelope-open-text"></i>&nbsp;&nbsp;Email</label>

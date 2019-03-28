@@ -5,12 +5,13 @@ class User < ApplicationRecord
   has_many :polls
   belongs_to :profile_picture
 
-  has_secure_password
+
 
   validates :username, presence: true, uniqueness: true
   validates :password_digest, presence: true
   validates :email, presence: true, uniqueness: true
 
+  has_secure_password
 
   def followers
     Follower.where("followed_id = #{id}")
