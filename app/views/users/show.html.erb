@@ -3,8 +3,8 @@
     <h2 class="title is-2">@<%= @user.username %></h2>
     <% if @user.user_type != "free" %>
       ✔️<% end %>
-      <h2 class="title is-5"><%= link_to "Followers: ", followers_path(@user)%><%= @user.followers.count %></h2>
-      <h2 class="title is-5"><%= link_to "Following: ", followers_path(@user)%><%= @user.following.count %></h2>
+      <h2 class="title is-5"><%= link_to "Followers: ", follower_path(@user)%><%= @user.followers.count %></h2>
+      <h2 class="title is-5"><%= link_to "Following: ", follower_path(@user)%><%= @user.following.count %></h2>
     <br>
 
     <% if Follower.where(follower_id: current_user.id).map{|f| f.followed_id}.include?(@user.id) %>
