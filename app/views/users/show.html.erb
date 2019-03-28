@@ -1,6 +1,6 @@
 <div class="container is-fluid" style="margin-top:20px; margin-bottom:20px;">
   <div class="box">
-    <%= image_tag(@user.profile_picture.img_url) %>
+    <%= image_tag(@user.profile_picture.img_url, size: "300x300", border: "5") %>
     <h2 class="title is-2">@<%= @user.username %></h2>
     <% if @user.user_type != "free" %>
       ✔️<% end %>
@@ -8,6 +8,7 @@
     <h2 class="title is-5"><%= link_to "Following: ", follower_path(@user)%><%= @user.following.count %></h2>
     <br>
 
+    <% if current_user.id != @user.id %>
     <% if Follower.where(follower_id: current_user.id).map{|f| f.followed_id}.include?(@user.id) %>
       <%= hidden_field_tag 'todo', "unfollow" %>
       <%= button_tag(type: 'submit', class: "button is-secondary", value: @user.id) do %>
@@ -16,6 +17,7 @@
       <%= hidden_field_tag 'todo', "follow" %>
       <%= button_tag(type: 'submit', class: "button is-primary", value: @user.id) do %>
       <% content_tag(:normal, 'Follow') %><% end %>
+    <% end %>
     <% end %>
   </form>
 </div>
