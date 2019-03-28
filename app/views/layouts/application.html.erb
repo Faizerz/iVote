@@ -76,20 +76,20 @@
               <p style="position: relative" id="pid">
                 <b>iVote</b>
               </p>
-
             </div>
-            <div class="column is-4" style="text-align:center"></div>
+            <div class="column is-4" style="text-align:center">
+              <%= yield %>
+            </div>
           </div>
-          <%= yield %>
         <% end %>
       </div>
     </body>
     <footer class="footer">
-    <div class="content has-text-centered">
-      <p>
-        <strong>iVote©</strong>
-        by Fez A & Kai S.
-      </p>
-    </div>
-  </footer>
- </html>
+      <div class="content has-text-centered">
+        <p>
+          <strong>iVote©</strong>
+          by Fez A & Kai S.
+        </p>
+      </div>
+    </footer>
+  </html>
