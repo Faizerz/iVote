@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   get '/logout', to: 'sessions#destroy'
   get '/users/:id/leaderboard', to: 'users#leaderboard', as: 'leaderboard'
   get '/users/:id/upgrade', to: 'users#upgrade', as: 'upgrade'
+  post '/polls/filter', to: 'polls#filter', as: 'filter'
 
 end
