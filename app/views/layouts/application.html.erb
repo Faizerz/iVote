@@ -16,12 +16,12 @@
     <div style="min-height:440px">
 
       <% if current_user %>
-        <nav class="navbar is-primary" role="navigation" aria-label="main navigation" style="margin-bottom:1px; border-bottom: 1px solid lightgray;">
+        <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
           <div class="navbar-brand">
             <a class="navbar-item" href="<%= root_path %>">iVote</a>
           </div>
         <% else %>
-          <nav class="navbar is-primary" role="navigation" aria-label="main navigation" style="margin-bottom:1px; border-bottom: 1px solid lightgray;">
+          <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
               <a class="navbar-item" href="#"><strong>iVote</strong></a>
             </div>
@@ -80,7 +80,7 @@
     </div>
   </body>
 <% if !current_user %>
-  <footer class="footer" style="position: absolute; bottom:0px; width:100%; padding:20px; height:160px">
+  <footer class="footer" style="position: absolute; bottom:0px; width:100%; padding:20px; height:15%">
     <div class="content has-text-left">
       <p>
         <strong>iVote©</strong>
@@ -90,4 +90,3 @@
   </footer>
 <% end %>
 </html>
-
