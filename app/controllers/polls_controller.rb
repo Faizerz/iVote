@@ -1,6 +1,34 @@
 class PollsController < ApplicationController
   def index
-    @polls = Poll.all
+    if params[:filter]
+      @filter = params[:filter]
+      array = []
+    else
+      @polls = Poll.all.reverse
+    end
+
+    if @filter == 'all'
+      @polls = Poll.all.reverse
+    elsif @filter == 'follow'
+      user_ids = Follower.where(follower_id: current_user.id).map{|f| f.followed_id}
+      user_ids.each do |id|
+        Poll.where(user_id: id).each do |p|
+          array << p
+        end
+      end
+      @polls = array.reverse
+    elsif @filter == 'polls'
+      Poll.all.each do |p|
+        p.votes.map{|v| v.user_id}.exclude?(current_user.id)? array << p : nil
+      end
+      @polls = array.reverse
+    elsif @filter == 'answers'
+      ids = current_user.votes.map{|p| p.poll_id}
+      ids.each do |id|
+        array << Poll.find(id)
+      end
+      @polls = array.reverse
+    end
   end
 
   def show
@@ -19,6 +47,10 @@ class PollsController < ApplicationController
       creating_user.update(score: (current_score - 10))
     end
     redirect_to @poll
+  end
+
+  def filter
+
   end
 
   private
