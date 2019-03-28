@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @votes = Vote.all
     @user = User.find(params[:id])
   end
 
