@@ -46,3 +46,11 @@
     color: white;
     font-size: 61px;
  }
+
+ .navbar-link:not(.is-arrowless)::after{
+   border-color:#363636
+}
+
+ .navbar-link.is-active, .navbar-link:hover, a.navbar-item.is-active, a.navbar-item:hover {
+   color: #363636
+ }
