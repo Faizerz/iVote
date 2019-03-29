@@ -2,33 +2,66 @@ class PollsController < ApplicationController
   def index
     if params[:filter]
       @filter = params[:filter]
-      array = []
+      cookies[:filter] = @filter
     else
-      @polls = Poll.all.reverse
+      @polls = all_polls
+      if cookies[:filter]
+        @filter = cookies[:filter]
+      end
     end
 
     if @filter == 'all'
-      @polls = Poll.all.reverse
+      all_polls
     elsif @filter == 'follow'
-      user_ids = Follower.where(follower_id: current_user.id).map{|f| f.followed_id}
-      user_ids.each do |id|
-        Poll.where(user_id: id).each do |p|
-          array << p
-        end
-      end
-      @polls = array.reverse
+      followers_only
     elsif @filter == 'polls'
-      Poll.all.each do |p|
-        p.votes.map{|v| v.user_id}.exclude?(current_user.id)? array << p : nil
-      end
-      @polls = array.reverse
+      polls_only
     elsif @filter == 'answers'
-      ids = current_user.votes.map{|p| p.poll_id}
-      ids.each do |id|
-        array << Poll.find(id)
-      end
-      @polls = array.reverse
+      answers_only
+    elsif @filter == 'date_desc'
+      @polls = Poll.all
+    elsif @filter == 'date_asc'
+      @polls = Poll.all.reverse
     end
+  end
+
+  def polls_only
+    array = []
+    Poll.all.each do |p|
+      p.votes.map{|v| v.user_id}.exclude?(current_user.id)? array << p : nil
+    end
+    @polls = array.reverse
+  end
+
+  def answers_only
+    array = []
+    ids = current_user.votes.map{|p| p.poll_id}
+    ids.each do |id|
+      array << Poll.find(id)
+    end
+    @polls = array.reverse
+  end
+
+  def followers_only
+    array = []
+    answered = []
+    questions = []
+    user_ids = Follower.where(follower_id: current_user.id).map{|f| f.followed_id}
+    user_ids.each do |id|
+      Poll.where(user_id: id).each do |p|
+        p.votes.map{|v| v.user_id}.exclude?(current_user.id)? questions << p : answered << p
+      end
+    end
+    questions.reverse.each {|q| array << q}
+    answered.reverse.each {|a| array << a}
+    @polls = array
+  end
+
+  def all_polls
+    array = []
+    polls_only.each {|p| array << p}
+    answers_only.each {|p| array << p}
+    @polls = array
   end
 
   def show
