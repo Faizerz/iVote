@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :followers, only: [:show, :create]
-  resources :polls, :users
+  resources :polls
+  resources :users, except: [:edit, :update, :destroy]
   resources :votes, only: [:create]
   resources :comments, only: [:create]
 

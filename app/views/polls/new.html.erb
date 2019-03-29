@@ -2,8 +2,8 @@
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-5 is-centered">
-        <% if current_user.user_type == "free" && current_user.score < 5 %>
-          <p>You need a minimum of 10 points to create a poll. Answer <%="#{10-current_user.score}"%> more polls to get enough points!</p>
+        <% if current_user.user_type == "free" && current_user.score < 10 %>
+          <p>You need a minimum of 10 points to create a poll. Answer <%="#{(10-current_user.score)/2}"%> more polls to get enough points!</p>
         <% else%>
           <h2 class="title is-2">Create New Poll</h2>
           <%= form_for @poll do |f| %>
