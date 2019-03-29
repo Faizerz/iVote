@@ -5,8 +5,6 @@ class User < ApplicationRecord
   has_many :polls
   belongs_to :profile_picture
 
-
-
   validates :username, presence: true, uniqueness: true
   validates :password_digest, presence: true
   validates :email, presence: true, uniqueness: true
@@ -26,6 +24,8 @@ class User < ApplicationRecord
       found = User.where(username: search)
       if found.empty?
         User.all
+      else
+        found
       end
     else
       User.all

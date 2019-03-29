@@ -14,9 +14,11 @@
       <div class="select">
         <select name="filter">
           <option value="all" <%= @filter == 'all' ? "selected" : nil %>>View All</option>
-          <option value="follow" <%= @filter == 'follow' ? "selected" : nil %>>Following Only</option>
-          <option value="polls" <%= @filter == 'polls' ? "selected" : nil %>>Polls Only</option>
-          <option value="answers" <%= @filter == 'answers' ? "selected" : nil %>>Answered Only</option>
+          <option value="follow" <%= @filter == 'follow' ? "selected" : nil %>>Following</option>
+          <option value="polls" <%= @filter == 'polls' ? "selected" : nil %>>Unanswered Polls</option>
+          <option value="answers" <%= @filter == 'answers' ? "selected" : nil %>>Answered Polls</option>
+          <option value="date_desc" <%= @filter == 'date_desc' ? "selected" : nil %>>Oldest First</option>
+          <option value="date_asc" <%= @filter == 'date_asc' ? "selected" : nil %>>Newest First</option>
         </select>
       </div>
       <button type="submit" class="button is-secondary">Filter</button>
@@ -87,3 +89,4 @@
       <% end %>
 
     </div>
+<br><br><br>

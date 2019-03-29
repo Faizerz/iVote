@@ -22,12 +22,12 @@
         </th>
       </tr>
     </thead>
+    <tbody>
     <% counter = 0 %>
       <% @users.order(score: :desc).each do |user| %>
         <% if user.id == current_user.id %>
-          <tbody>
             <tr class="is-selected" style="background-color: #209cee">
-              <th><%= counter+=1 %></th>
+              <td><b><%= counter+=1 %></b></td>
               <td><%= link_to "@" + user.username, user_path(user.id) %></td>
               <td><%= user.score %></td>
               <td><%= user.polls.count %></td>
@@ -36,7 +36,7 @@
             </tr>
           <% else %>
             <tr>
-              <th><%= counter+=1 %></th>
+              <td><b><%= counter+=1 %></b></td>
               <td><%= link_to "@" + user.username, user_path(user.id) %></td>
               <td><%= user.score %></td>
               <td><%= user.polls.count %></td>
@@ -45,5 +45,7 @@
             </tr>
           <% end %>
         <% end %>
+        </tbody>
       </table>
     </div>
+<br><br><br>
