@@ -84,7 +84,7 @@
           </div><br>
 
           <h5 style="font-size:0.8em">Created by:
-            <%= link_to poll.user.username, user_path(poll.user.id) %></h5>
+            <%= link_to poll.user.username, user_path(poll.user.id) %> at <%= poll.created_at.strftime("%H:%M, %d %b") %></h5>
         </div>
       <% end %>
 
