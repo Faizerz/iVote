@@ -4,6 +4,15 @@ class UsersController < ApplicationController
 
   def index
     @users = User.search(params[:search])
+    if params[:commit]
+      if @users.count == 1 || @users.count != User.all.count
+        cookies.delete :search
+      else
+        cookies[:search] = "No usernames match this search"
+      end
+    else
+      cookies.delete :search
+    end
   end
 
   def leaderboard

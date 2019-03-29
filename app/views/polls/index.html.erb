@@ -14,9 +14,11 @@
       <div class="select">
         <select name="filter">
           <option value="all" <%= @filter == 'all' ? "selected" : nil %>>View All</option>
-          <option value="follow" <%= @filter == 'follow' ? "selected" : nil %>>Following Only</option>
-          <option value="polls" <%= @filter == 'polls' ? "selected" : nil %>>Polls Only</option>
-          <option value="answers" <%= @filter == 'answers' ? "selected" : nil %>>Answered Only</option>
+          <option value="follow" <%= @filter == 'follow' ? "selected" : nil %>>Following</option>
+          <option value="polls" <%= @filter == 'polls' ? "selected" : nil %>>Unanswered Polls</option>
+          <option value="answers" <%= @filter == 'answers' ? "selected" : nil %>>Answered Polls</option>
+          <option value="date_desc" <%= @filter == 'date_desc' ? "selected" : nil %>>Oldest First</option>
+          <option value="date_asc" <%= @filter == 'date_asc' ? "selected" : nil %>>Newest First</option>
         </select>
       </div>
       <button type="submit" class="button is-secondary">Filter</button>
@@ -82,8 +84,9 @@
           </div><br>
 
           <h5 style="font-size:0.8em">Created by:
-            <%= link_to poll.user.username, user_path(poll.user.id) %></h5>
+            <%= link_to poll.user.username, user_path(poll.user.id) %> at <%= poll.created_at.strftime("%H:%M, %d %b") %></h5>
         </div>
       <% end %>
 
     </div>
+<br><br><br>
