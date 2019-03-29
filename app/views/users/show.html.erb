@@ -8,7 +8,7 @@
       </div>
       <div class="columns is-12" style="width:100%; margin:20px;">
         <div class="column is-6" style="padding-top:0px;">
-          <h2 class="title is-2"><%= @user.username %></h2>
+          <h2 class="title is-2"><%= @user.username.capitalize %></h2>
           <% if @user.user_type != "free" %>
             ✔️<% end %>
           <br>
@@ -38,7 +38,7 @@
   <div class="column">
     <h2 class="title is-3">Answered:
     </h2>
-    <% @votes.each do |v| %>
+    <% @votes.order(:created_at).reverse.each do |v| %>
       <% if v.user_id == current_user.id %>
         <div class="box">
           Poll:
@@ -113,8 +113,7 @@
 
             </div><br>
 
-            <h5 style="font-size:0.8em">Created by:
-              <%= link_to poll.user.username, user_path(poll.user.id) %></h5>
+            <h5 style="font-size:0.8em">Created at: <%= poll.created_at.strftime("%H:%M, %d %b") %></h5>
           </div>
         <% end %>
       </div>

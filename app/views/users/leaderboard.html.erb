@@ -1,6 +1,14 @@
-<br>
+<div class="is-centered" style="text-align: center; margin-bottom:35px;   margin-top:50px">
+  <h1 style="font-size:1.8em">
+    <b>Leaderboard</b>
+  </h1>
+
+  <p>Creating a poll cost 10pts</p>
+  <p>Answering a poll awards you 2pts</p>
+  <p>Another user answering your poll awards you 1pt</p>
+  
+</div>
 <div class="box">
-  <h2 class="title is-2">Leaderboard</h2>
   <table class="table is-bordered is-striped is-hoverable is-fullwidth">
     <thead>
       <tr>
@@ -28,7 +36,7 @@
         <% if user.id == current_user.id %>
             <tr class="is-selected" style="background-color: #209cee">
               <td><b><%= counter+=1 %></b></td>
-              <td><%= link_to "@" + user.username, user_path(user.id) %></td>
+              <td><%= link_to user.username.capitalize, user_path(user.id) %></td>
               <td><%= user.score %></td>
               <td><%= user.polls.count %></td>
               <td><%= user.followers.count %></td>
@@ -37,7 +45,7 @@
           <% else %>
             <tr>
               <td><b><%= counter+=1 %></b></td>
-              <td><%= link_to "@" + user.username, user_path(user.id) %></td>
+              <td><%= link_to user.username.capitalize, user_path(user.id) %></td>
               <td><%= user.score %></td>
               <td><%= user.polls.count %></td>
               <td><%= user.followers.count %></td>
