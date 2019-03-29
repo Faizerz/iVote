@@ -7,12 +7,12 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-ProfilePicture.create(img_url: "https://static-cdn.jtvnw.net/jtv_user_pictures/f2507460-9669-4714-b1bb-dd2c75bd005a-profile_image-300x300.jpg")
+ProfilePicture.create(img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxRNn3Lfqr6CKNOvSgs4Ilr29OL5eO-IXT3dgmMVqzCy2WAggfmw")
 
-ProfilePicture.create(img_url: "https://cdn2.digitalartsonline.co.uk/cmsdata/slideshow/3306055/shme7_Final.jpg")
+ProfilePicture.create(img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ_ImRvLpADiKtLKG7LYWWHAbe47P2ESiYfkk4hPboiqls3v-M2")
 
-ProfilePicture.create(img_url: "http://farm4.static.flickr.com/3648/3548255118_d026c73d1e.jpg")
+ProfilePicture.create(img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuxTaXtaEpHDBboLwYtEMIZReUCBNT9J9-ezd2PLFtbyrmQvpO")
 
-ProfilePicture.create(img_url: "https://cdn.dribbble.com/users/1675845/screenshots/4103971/________-1.gif")
+ProfilePicture.create(img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOWp_p-WG46Xu2xLHxG00AOsPNVFbcAXGWL82xZD0hGWx9ualu")
 
-ProfilePicture.create(img_url: "https://media2.giphy.com/media/dcMBpNILailsQ/source.gif")
+ProfilePicture.create(img_url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQviEYdP8hNCyB_bCJrzy3J5799GWiahAkzpzSC8um1NH208qlq")
