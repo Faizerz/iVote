@@ -67,7 +67,7 @@
         Comment Section
         <div class="columns is-4 is-multiline" style="margin-top:20px;">
           <div class="column">
-            <% @poll.comments.order(created_at: :desc).each do |comment| %>
+            <% @poll.comments.order(:created_at).each do |comment| %>
 
               <div class="box">
                 <b><%= link_to comment.user.username, user_path(comment.user) %> </b>
